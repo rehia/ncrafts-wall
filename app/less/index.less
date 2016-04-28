@@ -1,0 +1,190 @@
+@import "./tweet";
+
+@font-face {
+  font-family: bauhaus_93;
+  src: url(../fonts/bauhaus_93/bauhaus_93.ttf)
+}
+
+@darkBlue: rgb(49, 112, 143);
+@darkBlueBorder: rgba(49, 112, 143, 0.2);
+@blue: #428bca;
+@lightBlue: rgb(82, 179, 217);
+@lightBlueBg: rgba(82, 179, 217, 0.6);
+@darkGrey: #777;
+@easing: ease; //cubic-bezier(0.19, 1, 0.22, 1);
+
+@keyframes fadeElement {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes enlarge {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    width: 100%;
+    border-right-width: 1px;
+  }
+  99% {
+    border-right-width: 1px;
+  }
+  100% {
+    width: 0;
+    border-right-width: 0;
+  }
+}
+
+body {
+  font-family: Lato, Helvetica, Arial, sans-serif;
+}
+
+.navbar-custom {
+  background-color: #fff;
+  border-color: #eee;
+
+  .navbar-brand {
+    color: #777;
+  }
+
+  .navbar-collapse, .navbar-form {
+    border-color: #e7e7e7;
+  }
+}
+
+.navbar {
+  min-height: 60px;
+}
+
+.navbar-brand {
+  float: left;
+  padding: 20px 15px;
+  font-size: 16px;
+  line-height: 20px;
+  height: 60px;
+
+  img {
+    display: inline;
+  }
+}
+
+.navbar-logo {
+  padding-bottom: 5px;
+  margin-top: -8px;
+  height: 36px;
+  margin-bottom: -8px;
+}
+
+.text-logo {
+  font-family: bauhaus_93, Arial, sans-serif;
+  font-size: 1.8em;
+}
+
+.navbar-text {
+  color: #777;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 20px 0 20px 50px;
+  line-height: 20px;
+  position: relative;
+  display: block;
+  margin: 0;
+}
+
+.hashtag {
+  color: @lightBlue;
+}
+
+.fa-retweet {
+  color: rgba(26, 198, 116, 1);
+}
+
+.poweredBy {
+  float: right;
+  margin-top: 20px;
+}
+
+.wall {
+  @tweetHeight: 100px;
+  @tweetPadding: 5px;
+  @nameHeight: 20px;
+  @pictureWidth: 48px;
+  @textColor: #333;
+  @bgColor: white;
+  @imageTop: (@tweetHeight - @pictureWidth - 4*@tweetPadding) / 2;
+  @imageBgColor: #999;
+  @imageShadow: 0 0 3px rgba(0, 0, 0, 0.4);
+  @borderColor: fade(@darkBlue, 40%);
+  @textSize: 13px;
+
+  .tweet(@tweetHeight, @tweetPadding, @nameHeight, @pictureWidth, @textColor,
+          @bgColor, @imageBgColor, @imageShadow, @borderColor, @textSize);
+
+  .tweet-container {
+    .tweet {
+      .picture {
+        .pictureContent {
+          animation: 1s fadeElement @easing,
+          1s enlarge @easing both;
+
+          img {
+            position: absolute;
+            top: @imageTop;
+          }
+        }
+      }
+
+      .content-text {
+        .fade-text {
+          animation: 1s slideRight @easing both;
+        }
+
+        .tweet-text {
+          animation: 1s fadeElement @easing both;
+        }
+      }
+
+    }
+  }
+}
+
+.lastTweet {
+  @tweetHeight: 180px;
+  @tweetPadding: 15px;
+  @nameHeight: 40px;
+  @pictureWidth: 73px;
+  @textColor: white;
+  @bgColor: @lightBlueBg;
+  @imageTop: 10px;
+  @imageBgColor: #ccc;
+  @imageShadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  @borderColor: white;
+  @textSize: 22px;
+
+  .tweet(@tweetHeight, @tweetPadding, @nameHeight, @pictureWidth, @textColor,
+          @bgColor, @imageBgColor, @imageShadow, @borderColor, @textSize);
+}
+
+.lastTweet {
+  .tweet-container {
+    .tweet {
+      animation: 1s fadeElement @easing both;
+
+      .content-text {
+        .fade-text {
+          display: none;
+        }
+      }
+    }
+  }
+}

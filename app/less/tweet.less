@@ -1,0 +1,73 @@
+.tweet(@tweetHeight, @tweetPadding, @nameHeight, @pictureWidth, @textColor,
+  @bgColor, @imageBgColor, @imageShadow, @borderColor, @textSize) {
+  .tweet-container {
+    padding: @tweetPadding;
+
+    .tweet {
+      min-height: @tweetHeight;
+      color: @textColor;
+      background-color: @bgColor;
+      padding: @tweetPadding 0;
+
+      .picture, .content-text {
+        float: left;
+      }
+
+      .picture, .tweet-text {
+        padding: 0 @tweetPadding;
+      }
+
+      .picture {
+        width: 16.7%;
+
+        .pictureContent {
+          width: @pictureWidth;
+          height: @pictureWidth;
+          margin: 0 auto;
+
+          img {
+            width: 100%;
+            height: 100%;
+            line-height: @tweetHeight;
+            background-color: @imageBgColor;
+            border-radius: 50%;
+            box-shadow: @imageShadow;
+          }
+        }
+      }
+
+      .content-text {
+        width: 83.3%;
+
+        .fade-text {
+          position: absolute;
+          width: 100%;
+          min-height: @tweetHeight - 2*@tweetPadding;
+          background-color: white;
+          border-right: @borderColor 1px solid;
+          z-index: 10;
+        }
+
+        .tweet-text {
+          width: 100%;
+          border-left: @borderColor 1px solid;
+          min-height: @tweetHeight - 2*@tweetPadding;
+          p {
+            font-size: @textSize;
+            margin: 0 @tweetPadding;
+          }
+
+          .name {
+            line-height: @nameHeight;
+            font-weight: 600;
+          }
+
+          @textHeight: @tweetHeight - 2*@tweetPadding - @nameHeight;
+          .text {
+            min-height: @textHeight;
+          }
+        }
+      }
+    }
+  }
+}
