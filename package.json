@@ -41,6 +41,7 @@
     "redux": "^3.5.2",
     "redux-ping": "^0.2.0",
     "redux-thunk": "^2.0.1",
+    "reselect": "^2.5.1",
     "tweetping-connect": "^1.2.0",
     "uglify-js": "^2.6.2"
   },
