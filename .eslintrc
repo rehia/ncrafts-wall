@@ -1,3 +1,6 @@
 {
-    "extends": "lightstream"
+    "extends": "lightstream",
+    "rules": {
+      "react/no-danger": 0
+    }
 }
