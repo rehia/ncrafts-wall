@@ -21,7 +21,7 @@ const Tweet = (props) => {
     <a href={tweetUrl} target="_blank">
       <div className="tweet">
         <div className="picture">
-          <div className="pictureContent">
+          <div className="picture-content">
             <img src={profilePicture}/>
           </div>
         </div>

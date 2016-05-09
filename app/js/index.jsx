@@ -9,6 +9,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import Wall from './Wall.jsx';
 import LastTweet from './LastTweet.jsx';
+import MediaWall from './MediaWall.jsx';
 import {parse as parseQuery} from 'querystring';
 import reducers from './reducers';
 import {resize} from './actions';
@@ -17,6 +18,7 @@ import {resize} from './actions';
 const params = parseQuery(document.location.search.replace('?', ''));
 const columns = parseInt(params.columns, 10) || 3;
 const lines = parseInt(params.lines, 10) || 3;
+const media = params.hasOwnProperty('media');
 
 const streamId = 'd8eeba3a';
 
@@ -36,9 +38,15 @@ connect(streamId, 'wall', (post) => {
   store.dispatch(aggregate(post));
 }, 'wss://tweetping.net/');
 
-ReactDOM.render(<Provider store={store}>
-  <div>
-    <LastTweet />
-    <Wall />
-  </div>
-</Provider>, document.getElementById('content'));
+if (media) {
+  ReactDOM.render(<Provider store={store}>
+    <MediaWall />
+  </Provider>, document.getElementById('content'));
+} else {
+  ReactDOM.render(<Provider store={store}>
+    <div>
+      <LastTweet />
+      <Wall />
+    </div>
+  </Provider>, document.getElementById('content'));
+}

@@ -7,7 +7,7 @@ import Tweet from './Tweet.jsx';
 const LastTweet = (props) => {
   const tweet = props.wall.all.items.slice(-1)[0];
   if (tweet) {
-    return <div className="lastTweet container">
+    return <div className="last-tweet container">
       <Tweet key={tweet._id} bootstrapWidth="8" bootstrapOffset="2" pictureSize="bigger" {...tweet} />
     </div>;
   }
