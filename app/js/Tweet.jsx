@@ -39,6 +39,7 @@ const Tweet = (props) => {
 };
 
 Tweet.propTypes = {
+  id: PropTypes.string,
   index: PropTypes.number,
   bootstrapWidth: PropTypes.string,
   bootstrapOffset: PropTypes.string,
